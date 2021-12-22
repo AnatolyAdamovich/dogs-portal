@@ -1,0 +1,142 @@
+<ISSPECS>
+	<DESCRIPTION>
+		<TITLE>Dogs portal</TITLE>
+		<SUBJ>Домашние животные, собаки</SUBJ>
+	</DESCRIPTION>
+	<DATA>
+		<ENTITY ent_id="users">
+			<PROPERTY>id</PROPERTY>
+			<PROPERTY>username</PROPERTY>
+			<PROPERTY>login</PROPERTY>
+			<PROPERTY>role</PROPERTY>
+			<PROPERTY>avatar_path</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="breeds">
+			<PROPERTY>id</PROPERTY>
+			<PROPERTY>breed_name</PROPERTY>
+			<PROPERTY>info</PROPERTY>
+			<PROPERTY>image_path</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="user_like_breeds">
+			<PROPERTY>BreedId</PROPERTY>
+			<PROPERTY>UserId</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="likes">
+			<PROPERTY>BreedId</PROPERTY>
+			<PROPERTY>count</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="cards">
+			<PROPERTY>id</PROPERTY>
+			<PROPERTY>title</PROPERTY>
+			<PROPERTY>content</PROPERTY>
+			<PROPERTY>image</PROPERTY>
+			<PROPERTY>UserId</PROPERTY>
+		</ENTITY>
+		<RELATIONSHIPS ent_ids = "users cards">
+			<PROPERTY>ONE TO MANY</PROPERTY>
+		</RELATIONSHIPS>
+		<RELATIONSHIPS ent_ids = "users user_like_breeds breeds">
+			<PROPERTY>MANY TO MANY</PROPERTY>
+		</RELATIONSHIPS>
+		<RELATIONSHIPS ent_ids = "breeds likes">
+			<PROPERTY>ONE TO ONE</PROPERTY>
+		</RELATIONSHIPS>
+		<CONSTRAINT> Ограничение NOT NULL повсеместно, кроме строки avatar_path в таблице user </CONSTRAINT>
+		<CONSTRAINT> Уникальный login у каждого пользователя </CONSTRAINT>
+		<CONSTRAINT> Для каждого нового пользователя по умолчанию роль USER </CONSTRAINT>
+		<CONSTRAINT> Уникальный breed_name у каждой породы </CONSTRAINT>
+	</DATA>
+	<ROLES>
+		<ROLE>
+			<TITLE>VISITER</TITLE>
+			<RESPOSIBILITY>Регистрация на сайте</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр карточек пород на главной странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Сортировка карточек по лайкам</RESPOSIBILITY>
+			<RESPOSIBILITY>Поиск карточек по названию</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр страницы породы</RESPOSIBILITY>
+			<TOTALUSERS>NOT LIMITED</TOTALUSERS>
+		</ROLE>
+		<ROLE>
+			<TITLE>USER</TITLE>
+			<RESPOSIBILITY>Просмотр карточек пород на главной странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Сортировка карточек по лайкам</RESPOSIBILITY>
+			<RESPOSIBILITY>Поиск карточек по названию</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр страницы породы</RESPOSIBILITY>
+			<RESPOSIBILITY>Отметить породу лайком на её странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр карточек других пользователей на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр профиля пользователя, создавшего карточку</RESPOSIBILITY>
+			<RESPOSIBILITY>Создание карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своих карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своего профиля на сайте на странице "мой профиль"</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр всех карточек пользователя на странице профиля</RESPOSIBILITY>
+			<TOTALUSERS>NOT LIMITED</TOTALUSERS>
+		</ROLE>
+		<ROLE>
+			<TITLE>MODERATOR</TITLE>
+			<RESPOSIBILITY>Просмотр карточек пород на главной странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Сортировка карточек по лайкам</RESPOSIBILITY>
+			<RESPOSIBILITY>Поиск карточек по названию</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр страницы породы</RESPOSIBILITY>
+			<RESPOSIBILITY>Отметить породу лайком на её странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр карточек других пользователей на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр профиля пользователя, создавшего карточку</RESPOSIBILITY>
+			<RESPOSIBILITY>Создание карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своих карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своего профиля на сайте на странице "мой профиль"</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр всех карточек пользователя на странице профиля</RESPOSIBILITY>
+			<RESPOSIBILITY>Удаление пользовательских карточек на странице сообщества</RESPOSIBILITY>
+			<TOTALUSERS>NOT LIMITED</TOTALUSERS>
+		</ROLE>
+		<ROLE>
+			<TITLE>MANAGER</TITLE>
+			<RESPOSIBILITY>Просмотр карточек пород на главной странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Сортировка карточек по лайкам</RESPOSIBILITY>
+			<RESPOSIBILITY>Поиск карточек по названию</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр страницы породы</RESPOSIBILITY>
+			<RESPOSIBILITY>Отметить породу лайком на её странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр карточек других пользователей на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр профиля пользователя, создавшего карточку</RESPOSIBILITY>
+			<RESPOSIBILITY>Создание карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своих карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своего профиля на сайте на странице "мой профиль"</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр всех карточек пользователя на странице профиля</RESPOSIBILITY>
+			<RESPOSIBILITY>Создание карточек пород на главной странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Удаление породы на странице породы</RESPOSIBILITY>
+			<TOTALUSERS>NOT LIMITED</TOTALUSERS>
+		</ROLE>
+		<ROLE>
+			<TITLE>ADMIN</TITLE>
+			<RESPOSIBILITY>Просмотр карточек пород на главной странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Сортировка карточек по лайкам</RESPOSIBILITY>
+			<RESPOSIBILITY>Поиск карточек по названию</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр страницы породы</RESPOSIBILITY>
+			<RESPOSIBILITY>Отметить породу лайком на её странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр карточек других пользователей на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр профиля пользователя, создавшего карточку</RESPOSIBILITY>
+			<RESPOSIBILITY>Создание карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своих карточек на странице сообщества</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр своего профиля на сайте на странице "мой профиль"</RESPOSIBILITY>
+			<RESPOSIBILITY>Просмотр всех карточек пользователя на странице профиля</RESPOSIBILITY>
+			<RESPOSIBILITY>Создание карточек пород на главной странице</RESPOSIBILITY>
+			<RESPOSIBILITY>Удаление породы на странице породы</RESPOSIBILITY>
+			<RESPOSIBILITY>Удаление пользовательских карточек на странице сообщества</RESPOSIBILITY>
+			<TOTALUSERS>1</TOTALUSERS>
+		</ROLE>
+	</ROLES>
+	<TECHSPEC>
+		<TYPE>Web-development</TYPE>
+		<DEVTOOLS>
+			<DEV>JavaScript</DEV>
+			<DEV>NodeJS</DEV>
+			<DEV>ReactJS</DEV>
+			<DEV>Express</DEV>
+		</DEVTOOLS>
+		<DBMS>
+			<TITLE>MySQL</TITLE>
+			<VERSION>8.0.26</VERSION>
+			<REASONING>Знание языка SQL</REASONING>
+			<REASONING>Удобная среда разработки - MySQL workbench</REASONING>
+			<REASONING>Наличие подробной документации и материалов в открытом доступе</REASONING>
+		</DBMS>
+	</TECHSPEC>
+</ISSPECS>
